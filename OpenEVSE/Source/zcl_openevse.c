@@ -95,12 +95,12 @@
 enum evseCmd { EVSE_CMD_NONE, EVSE_CMD_STATE, EVSE_CMD_WIFI, EVSE_CMD_SLEEP, EVSE_CMD_ENABLE,
                   EVSE_CMD_LCDOFF, EVSE_CMD_LCDRGB, EVSE_CMD_LCDTEAL, EVSE_CMD_GETPOWER,
                   EVSE_CMD_GETTEMP, EVSE_CMD_GETENERGY, EVSE_CMD_GETSTATE, EVSE_CMD_GETSETTINGS,
-                  EVSE_CMD_SETLIMIT };
+                  EVSE_CMD_SETLIMIT, EVSE_CMD_SETCURRENT };
 
 const char * evseCode[] = { "", "ST", "WF", "FS", "FE",
                             "FB 0", "S0 1", "FB 6", "GG",
                             "GP", "GU", "GS", "GE",
-                            "SH" };
+                            "SH", "SC" };
 
 #define POLL_EVSE_PERIOD 200
 #define OPENEVSE_BL_NV 0x0401
@@ -181,7 +181,9 @@ static void zclOpenEvse_UARTInit(void);
 static void zclOpenEvse_UARTCallback(uint8 port, uint8 event);
 static void zclOpenEvse_UARTParse(char * rxData);
 static uint8 zclOpenEvse_nibbletohex(uint8 value);
+static uint8 zclOpenEvse_hextonibble(uint8 value);
 static uint16 zclOpenEvse_u8tohex(uint8 value);
+static uint8 zclOpenEvse_hextou8(uint16 value);
 
 // Functions to process ZCL Foundation incoming Command/Response messages
 static void zclOpenEvse_ProcessIncomingMsg( zclIncomingMsg_t *msg );
@@ -293,19 +295,6 @@ void zclOpenEvse_Init( byte task_id )
 #ifdef ZGP_AUTO_TT
   zgpTranslationTable_RegisterEP ( &zclOpenEvse_SimpleDesc );
 #endif
-
-  // Create the Voltage report command
-  zclOpenEvse_reportCmdVolts = (zclReportCmd_t *)osal_mem_alloc( sizeof( zclReportCmd_t ) +
-                 ( 1 * sizeof( zclReport_t ) ) );
-  if ( zclOpenEvse_reportCmdVolts != NULL )
-  {
-    zclOpenEvse_reportCmdVolts->numAttr = 1;
-
-    // Set up the first attribute
-    zclOpenEvse_reportCmdVolts->attrList[0].attrID = ATTRID_ELECTRICAL_MEASUREMENT_RMS_VOLTAGE;
-    zclOpenEvse_reportCmdVolts->attrList[0].dataType = ZCL_DATATYPE_UINT16;
-    zclOpenEvse_reportCmdVolts->attrList[0].attrData = (uint8 *)&zclOpenEvse_voltsScaled;
-  }
 
   // Create the Voltage report command
   zclOpenEvse_reportCmdVolts = (zclReportCmd_t *)osal_mem_alloc( sizeof( zclReportCmd_t ) +
@@ -1179,10 +1168,22 @@ void zclOpenEvse_UARTCallback(uint8 port, uint8 event)
   }
 }
 
-char temp[32];
+
 void zclOpenEvse_UARTParse(char * rxData)
 {
-  strcpy(temp, (const char *)rxData);
+  unsigned char chk = '$', i;
+
+  for (i = 0; i < strlen(rxData)-3; i ++)
+  {
+    chk ^= (uint8)rxData[i];
+  }
+
+  if (chk != zclOpenEvse_hextou8(*((uint16 *)&rxData[i+1]))) // If bad checksum, resend
+  {
+    zclOpenEvse_EVSEResend();
+    return;
+  }
+
   if (!strncmp((const char *)rxData, evseCode[EVSE_CMD_STATE], 2)) // Asynchronous state update
   {
     char * valid = NULL;
@@ -1307,6 +1308,13 @@ uint8 zclOpenEvse_nibbletohex(uint8 value)
     return value + '0';
 }
 
+// converts ascii character to 4-bit nibble
+uint8 zclOpenEvse_hextonibble(uint8 value)
+{
+    if (value >= 'A') return value + 10 - 'A';
+    return value - '0';
+}
+
 // returns value as 2 ascii characters in a 16-bit int
 uint16 zclOpenEvse_u8tohex(uint8 value)
 {
@@ -1318,6 +1326,19 @@ uint16 zclOpenEvse_u8tohex(uint8 value)
     hexdigits |= (zclOpenEvse_nibbletohex(hidigit) << 8);
 
     return hexdigits;
+}
+
+// value is 2 ascii characters in a 16-bit int
+uint8 zclOpenEvse_hextou8(uint16 value)
+{
+  uint8 chk;
+  uint8 lodigit = zclOpenEvse_hextonibble(value >> 8);
+  uint8 hidigit = zclOpenEvse_hextonibble(value & 0xFF);
+
+  chk = lodigit;
+  chk |= (hidigit << 4);
+
+  return chk;
 }
 /****************************************************************************
 ****************************************************************************/
