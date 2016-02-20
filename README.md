@@ -4,6 +4,7 @@ ZigBee add-on module for OpenEVSE
 ## Parts required
 CC2530 SZ2 wireless module with Axis RFX2401C LNA, goodluckbuy.com  
 MCP1702-3302E regulator for 3.3V, digikey.com  
+1.0k resistor, digikey.com  
 10uF tantalum, digikey.com  
 0.001uF capacitor, digikey.com  
 
