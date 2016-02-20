@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<Workspace>
+  <ConfigDictionary>
+    
+  <CurrentConfigs><Project>OpenEVSE/RouterEB</Project></CurrentConfigs></ConfigDictionary>
+  <Desktop>
+    <Static>
+      <Workspace>
+        <ColumnWidths>
+          
+          
+          
+          
+        <Column0>339</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
+      </Workspace>
+      <Build>
+        
+        
+        
+        
+      <ColumnWidth0>20</ColumnWidth0><ColumnWidth1>969</ColumnWidth1><ColumnWidth2>258</ColumnWidth2><ColumnWidth3>64</ColumnWidth3></Build>
+      <TerminalIO/>
+      <Find-in-Files>
+        
+        
+        
+        
+      <ColumnWidth0>695</ColumnWidth0><ColumnWidth1>66</ColumnWidth1><ColumnWidth2>598</ColumnWidth2><ColumnWidth3>265</ColumnWidth3></Find-in-Files>
+      <Find-All-Declarations>
+        
+        
+        
+      <ColumnWidth0>465</ColumnWidth0><ColumnWidth1>66</ColumnWidth1><ColumnWidth2>797</ColumnWidth2></Find-All-Declarations>
+    <Debug-Log><ColumnWidth0>20</ColumnWidth0><ColumnWidth1>1292</ColumnWidth1></Debug-Log><Disassembly><PreferedWindows><Position>4</Position><ScreenPosX>1153</ScreenPosX><ScreenPosY>1056</ScreenPosY><Windows/></PreferedWindows></Disassembly><Select-Ambiguous-Definitions><ColumnWidth0>552</ColumnWidth0><ColumnWidth1>78</ColumnWidth1><ColumnWidth2>946</ColumnWidth2></Select-Ambiguous-Definitions></Static>
+    <Windows>
+      
+      
+    <Wnd2>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-27275-14075</Identity>
+            <TabName>Workspace</TabName>
+            <Factory>Workspace</Factory>
+            <Session>
+              
+            <NodeDict><ExpandedNode>OpenEVSE</ExpandedNode><ExpandedNode>OpenEVSE/App</ExpandedNode><ExpandedNode>OpenEVSE/HAL</ExpandedNode><ExpandedNode>OpenEVSE/HAL/Target</ExpandedNode><ExpandedNode>OpenEVSE/HAL/Target/CC2530EB</ExpandedNode><ExpandedNode>OpenEVSE/HAL/Target/CC2530EB/Drivers</ExpandedNode><ExpandedNode>OpenEVSE/Tools</ExpandedNode></NodeDict></Session>
+          </Tab>
+        </Tabs>
+        
+      <SelectedTab>0</SelectedTab></Wnd2><Wnd3>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-1596-14147</Identity>
+            <TabName>Build</TabName>
+            <Factory>Build</Factory>
+            <Session/>
+          </Tab>
+          <Tab>
+            <Identity>TabID-12637-14350</Identity>
+            <TabName>Find in Files</TabName>
+            <Factory>Find-in-Files</Factory>
+            <Session/>
+          </Tab>
+          <Tab>
+            <Identity>TabID-8518-14836</Identity>
+            <TabName>Declarations</TabName>
+            <Factory>Find-All-Declarations</Factory>
+            <Session/>
+          </Tab>
+        <Tab><Identity>TabID-15943-2566</Identity><TabName>Ambiguous Definitions</TabName><Factory>Select-Ambiguous-Definitions</Factory><Session/></Tab><Tab><Identity>TabID-22299-16787</Identity><TabName>Debug Log</TabName><Factory>Debug-Log</Factory><Session/></Tab></Tabs>
+        
+      <SelectedTab>0</SelectedTab></Wnd3></Windows>
+    <Editor>
+      
+      
+      
+      
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Source\zcl_openevse.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>1220</YPos2><SelStart2>39887</SelStart2><SelEnd2>39887</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\..\ZMain\TI2530DB\ZMain.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>69</YPos2><SelStart2>3346</SelStart2><SelEnd2>3346</SelEnd2></Tab><ActiveTab>1</ActiveTab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\..\..\..\Components\osal\common\OSAL_Clock.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>191</YPos2><SelStart2>8203</SelStart2><SelEnd2>8203</SelEnd2></Tab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Positions>
+      
+      
+      
+      
+      
+    <Top><Row0><Sizes><Toolbar-01E0DDA0><key>iaridepm.enu1</key></Toolbar-01E0DDA0></Sizes></Row0></Top><Left><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>439</Bottom><Right>430</Right><x>-2</x><y>-2</y><xscreen>212</xscreen><yscreen>331</yscreen><sizeHorzCX>150568</sizeHorzCX><sizeHorzCY>461003</sizeHorzCY><sizeVertCX>306818</sizeVertCX><sizeVertCY>614206</sizeVertCY></Rect></Wnd2></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>234</Bottom><Right>1410</Right><x>-2</x><y>-2</y><xscreen>1412</xscreen><yscreen>236</yscreen><sizeHorzCX>1002841</sizeHorzCX><sizeHorzCY>328691</sizeHorzCY><sizeVertCX>150568</sizeVertCX><sizeVertCY>461003</sizeVertCY></Rect></Wnd3></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+  </Desktop>
+</Workspace>
+
+
